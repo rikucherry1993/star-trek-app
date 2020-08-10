@@ -17,4 +17,8 @@ public class AppConstants {
     public static final String EXTRA_TRAVEL_SPEED = "EXTRA_TRAVEL_SPEED";
     public static final String EXTRA_TRAVEL_TIME = "EXTRA_TRAVEL_TIME";
 
+    // Request code
+    public static final int TRIP_INFO_ACTIVITY = 1;
+    public static final int DESTINATION_ACTIVITY = 2;
+
 }

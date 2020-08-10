@@ -140,9 +140,11 @@ public class TripInfoActivity extends AppCompatActivity {
                         // TODO: start destination activity here.
                         // TODO: Set debug log.
 
-                        Intent i = new Intent();
+                        Intent i = new Intent(TripInfoActivity.this, DestinationActivity.class);
                         i.putExtra(AppConstants.EXTRA_TRAVEL_SPEED,textSpeed.getText().toString());
                         i.putExtra(AppConstants.EXTRA_TRAVEL_TIME,textTime.getText().toString());
+                        startActivityForResult(i,AppConstants.DESTINATION_ACTIVITY);
+
                         // TODO: Set unit to an individual text view.
                         // TODO: Set debug log.
 
