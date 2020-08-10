@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@color/black_100"
+     >
+
+    <ImageButton
+        android:id="@+id/image_button_help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/ic_help_black_24dp"
+        android:background="@color/black_100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/text_main_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/press_start_2p"
+        android:maxLines="1"
+        android:text="@string/main_title"
+        android:textColor="@color/gray_050"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/label_travel_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp"
+        android:fontFamily="@font/press_start_2p"
+        android:textColor="@color/gray_300"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_main_title"
+        android:text="@string/travel_speed" />
+
+    <TextView
+        android:id="@+id/text_travel_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:fontFamily="@font/press_start_2p"
+        android:textColor="@color/gray_300"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/label_travel_speed"
+        />
+
+    <com.google.android.material.slider.Slider
+        style="@style/MySlider"
+        android:id="@+id/discrete_slider_speed"
+        app:thumbColor="@color/gray_050"
+        app:haloColor="@color/gray_500"
+        app:trackColorActive="@color/gray_400"
+        app:trackColorInactive="@color/gray_700"
+        app:trackHeight="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:stepSize="1.0"
+        android:valueFrom="0.0"
+        android:valueTo="3.0"
+        android:value = "0.0"
+        app:labelBehavior="withinBounds"
+        app:layout_constraintTop_toBottomOf="@+id/label_travel_speed" />
+
+    <RelativeLayout
+        android:id="@+id/relative_spacecraft_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/discrete_slider_speed"
+        android:background="@drawable/shape_rectangle_spacecraft"
+        >
+
+    <TextView
+        android:id="@+id/text_spacecraft_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/spacecraft_information"
+        android:textSize="14sp"
+        android:fontFamily="@font/press_start_2p"
+        android:textColor="@color/gray_400"
+        />
+
+    <ImageView
+        android:id="@+id/image_spacecraft_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/label_travel_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp"
+        android:fontFamily="@font/press_start_2p"
+        android:textColor="@color/gray_300"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relative_spacecraft_image"
+        android:text="@string/travel_time" />
+
+    <TextView
+        android:id="@+id/text_travel_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:fontFamily="@font/press_start_2p"
+        android:textColor="@color/gray_300"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/label_travel_time"
+        />
+
+
+    <com.google.android.material.slider.Slider
+        style="@style/MySlider"
+        android:id="@+id/discrete_slider_time"
+        app:thumbColor="@color/gray_050"
+        app:haloColor="@color/gray_500"
+        app:trackColorActive="@color/gray_400"
+        app:trackColorInactive="@color/gray_700"
+        app:trackHeight="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:stepSize="1.0"
+        android:valueFrom="0.0"
+        android:valueTo="9.0"
+        android:value = "0.0"
+        app:labelBehavior="withinBounds"
+        app:layout_constraintTop_toBottomOf="@+id/label_travel_time" />
+
+
+    <Button
+        android:id="@+id/button_launch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LAUNCH"
+        android:gravity="center"
+        android:paddingTop="18dp"
+        android:paddingBottom="8dp"
+        android:fontFamily="@font/press_start_2p"
+        android:textColor="@color/gray_900"
+        android:textSize="24sp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/action_button_selector"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

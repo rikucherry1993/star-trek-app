@@ -1,4 +1,26 @@
 <resources>
     <string name="app_name">Star Trek</string>
     <string name="action_settings">Settings</string>
+
+    // view ids
+    // trip info activity
+    <string name="main_title">STAR TREK</string>
+    <string name="travel_speed">>>>TRAVEL SPEED:</string>
+    <string name="travel_time">>>>TRAVEL TIME:</string>
+    <string name="button_launch">LAUNCH</string>
+    <string name="hint_spacecraft_image">Image of your spacecraft</string>
+    <string name="help_information">dummy dummy</string>
+    <string name="spacecraft_information">Your spacecraft \n\nwill be shown here.</string>
+
+
+    <string name="unit_travel_speed">km/s</string>
+    <string name="unit_travel_time_day">day</string>
+    <string name="unit_travel_time_year">year</string>
+    <string name="unit_travel_time_years">years</string>
+
+
+
+
+
+
 </resources>
