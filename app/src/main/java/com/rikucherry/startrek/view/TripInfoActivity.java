@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.slider.LabelFormatter;
 import com.google.android.material.slider.Slider;
 import com.rikucherry.startrek.R;
@@ -158,8 +159,11 @@ public class TripInfoActivity extends AppCompatActivity {
         imageButtonHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: Show up introduction dialog.
                 //TODO: Set debug log.
+                new MaterialAlertDialogBuilder(TripInfoActivity.this, R.style.myMaterialAlertDialog)
+                        .setTitle(R.string.title_how_to_use)
+                        .setMessage(getString(R.string.text_introduction))
+                        .setPositiveButton(getString(R.string.button_positive),null).show();
             }
         });
 

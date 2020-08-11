@@ -24,6 +24,15 @@
     <string name="subtitle_stars_planets">>> Stars and planets</string>
 
 
+    // dialogs
+    <string name="title_how_to_use">HOW TO USE</string>
+    <string name="text_traveling">Traveling...</string>
+    <string name="text_introduction">1. Set traveling speed and time.\n2. Press LAUNCH.\n3. See how far your spacecraft can go.\n\nEnjoy your trip!</string>
+    <string name="button_positive">OK</string>
+
+    <string name="title_next_step">NEXT STEP</string>
+    <string name="text_next_step">Click related celestial objects for more information.</string>
+
 
 
 </resources>

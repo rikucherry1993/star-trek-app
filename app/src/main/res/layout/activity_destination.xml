@@ -59,6 +59,7 @@
             android:paddingLeft="25dp"
             android:textStyle="bold"
             android:textColor="@color/gray_100"
+            android:visibility="invisible"
             />
 
         <TextView

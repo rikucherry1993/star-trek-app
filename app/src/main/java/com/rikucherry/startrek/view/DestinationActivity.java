@@ -1,5 +1,6 @@
 package com.rikucherry.startrek.view;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -13,12 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.rikucherry.startrek.R;
 import com.rikucherry.startrek.Util.AppConstants;
 import com.rikucherry.startrek.model.ObjectsItem;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.lang.Thread.sleep;
 
 public class DestinationActivity extends AppCompatActivity {
 
@@ -27,6 +31,7 @@ public class DestinationActivity extends AppCompatActivity {
     // views
     ImageButton imageButtonBack;
     ImageButton imageButtonHelp;
+    TextView labelArrivingAt;
     TextView textArrivingAt;
     ImageSlider imageSlider;
     List<SlideModel> mSlideModel;
@@ -36,6 +41,9 @@ public class DestinationActivity extends AppCompatActivity {
     private List<ObjectsItem> mList = new ArrayList<>();
     private ObjectsItemAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+
+    // other components
+    private LoadingDialog loadingDialog;
 
 
 
@@ -47,10 +55,12 @@ public class DestinationActivity extends AppCompatActivity {
         // view binding
         imageButtonBack = findViewById(R.id.image_button_back);
         imageButtonHelp = findViewById(R.id.image_button_help);
+        labelArrivingAt = findViewById(R.id.label_arriving_at);
         textArrivingAt = findViewById(R.id.text_arriving_at);
         imageSlider = findViewById(R.id.image_galaxy_slider);
         objectList = findViewById(R.id.list_celestial_objects);
 
+        loadingDialog = new LoadingDialog(this);
 
         mSlideModel = new ArrayList<>();
 
@@ -72,8 +82,34 @@ public class DestinationActivity extends AppCompatActivity {
      */
     private void callSearchApiFake(String speed, String time){
 
+        loadingDialog.startLoadingDialog();
+
         //TODO: Replace with an actual api, show loading modal.
-        initializeUI();
+        new AsyncTask<Void,Void,Void>(){
+            @Override
+            protected Void doInBackground(Void... voids) {
+                try {
+                    sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void v){
+
+                loadingDialog.dismissDialog();
+
+                initializeUI();
+
+            }
+
+        }.execute();
+
+
+
     }
 
 
@@ -83,6 +119,7 @@ public class DestinationActivity extends AppCompatActivity {
     private void initializeUI(){
 
         // TODO: mock
+        labelArrivingAt.setVisibility(View.VISIBLE);
         textArrivingAt.setText("Centaurus");
 
         // TODO: mock: bind images to image slider.
@@ -170,8 +207,11 @@ public class DestinationActivity extends AppCompatActivity {
         imageButtonHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: Show up introduction dialog.
                 //TODO: Set debug log.
+                new MaterialAlertDialogBuilder(DestinationActivity.this, R.style.myMaterialAlertDialog)
+                        .setTitle(getString(R.string.title_next_step))
+                        .setMessage(getString(R.string.text_next_step))
+                        .setPositiveButton(getString(R.string.button_positive),null).show();
             }
         });
 
