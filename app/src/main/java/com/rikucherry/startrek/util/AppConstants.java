@@ -1,4 +1,4 @@
-package com.rikucherry.startrek.Util;
+package com.rikucherry.startrek.util;
 
 /**
  * @author rikucherry1993

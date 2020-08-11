@@ -16,7 +16,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.slider.LabelFormatter;
 import com.google.android.material.slider.Slider;
 import com.rikucherry.startrek.R;
-import com.rikucherry.startrek.Util.AppConstants;
+import com.rikucherry.startrek.util.AppConstants;
 
 /**
  * Fill in all the information needed for launch.

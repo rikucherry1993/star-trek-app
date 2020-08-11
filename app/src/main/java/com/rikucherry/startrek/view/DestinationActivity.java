@@ -16,8 +16,8 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.rikucherry.startrek.R;
-import com.rikucherry.startrek.Util.AppConstants;
 import com.rikucherry.startrek.model.ObjectsItem;
+import com.rikucherry.startrek.util.AppConstants;
 
 import java.util.ArrayList;
 import java.util.List;

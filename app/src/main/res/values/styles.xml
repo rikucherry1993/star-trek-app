@@ -21,7 +21,7 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
-    // style of slider
+    <!-- style of slider -->
     <style name="MySlider" parent="@style/Widget.MaterialComponents.Slider">
         <item name="labelStyle">@style/My_Tooltip</item>
         <item name="materialThemeOverlay">@style/ThemeOverlay.Slider</item>
@@ -38,20 +38,20 @@
     </style>
 
 
-    // Style of material dialog.
+    <!--Style of material dialog.-->
     <style name="myMaterialAlertDialog" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
         <item name="materialAlertDialogBodyTextStyle">@style/myMaterialComponents.Body.Text</item>
         <item name="buttonBarPositiveButtonStyle">@style/myMaterialAlertDialog.PositiveButton.Style</item>
     </style>
     <style name="myMaterialComponents.Body.Text" parent="MaterialAlertDialog.MaterialComponents.Body.Text">
         <item name="android:textColor">@color/gray_900</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">@font/press_start_2p</item>
     </style>
     <style name="myMaterialAlertDialog.PositiveButton.Style" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="android:textColor">@color/gray_050</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAllCaps">false</item>
         <item name="backgroundTint">@color/gray_900</item>
