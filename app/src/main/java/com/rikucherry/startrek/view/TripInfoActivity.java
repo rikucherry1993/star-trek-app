@@ -16,7 +16,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.slider.LabelFormatter;
 import com.google.android.material.slider.Slider;
 import com.rikucherry.startrek.R;
-import com.rikucherry.startrek.util.AppConstants;
+import com.rikucherry.startrek.constant.AppConstants;
 
 /**
  * Fill in all the information needed for launch.
@@ -138,7 +138,6 @@ public class TripInfoActivity extends AppCompatActivity {
                         break;
                     case MotionEvent.ACTION_UP:
                         view.setPressed(false);
-                        // TODO: start destination activity here.
                         // TODO: Set debug log.
 
                         Intent i = new Intent(TripInfoActivity.this, DestinationActivity.class);
