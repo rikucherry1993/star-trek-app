@@ -1,4 +1,4 @@
-package com.rikucherry.startrek.adapter;
+package com.rikucherry.startrek.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

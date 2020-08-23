@@ -1,4 +1,4 @@
-package com.rikucherry.startrek.view;
+package com.rikucherry.startrek.ui.view;
 
 import android.content.Intent;
 import android.os.Bundle;

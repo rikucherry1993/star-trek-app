@@ -7,10 +7,18 @@ public class ObjectsItem {
 
 
     private int imageResourceId;
+    private String systemName;
     private String objectName;
     private String objectCategory;
     private String objectIntroduction;
 
+    public String getSystemName() {
+        return systemName;
+    }
+
+    public void setSystemName(String systemName) {
+        this.systemName = systemName;
+    }
 
     public int getImageResourceId() {
         return imageResourceId;
