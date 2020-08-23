@@ -138,7 +138,6 @@ public class TripInfoActivity extends AppCompatActivity {
                         break;
                     case MotionEvent.ACTION_UP:
                         view.setPressed(false);
-                        // TODO: Set debug log.
 
                         Intent i = new Intent(TripInfoActivity.this, DestinationActivity.class);
                         i.putExtra(AppConstants.EXTRA_TRAVEL_SPEED,textSpeed.getText().toString());
@@ -146,7 +145,6 @@ public class TripInfoActivity extends AppCompatActivity {
                         startActivityForResult(i,AppConstants.DESTINATION_ACTIVITY);
 
                         // TODO: Set unit to an individual text view.
-                        // TODO: Set debug log.
 
                         break;
                 }
@@ -158,7 +156,6 @@ public class TripInfoActivity extends AppCompatActivity {
         imageButtonHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: Set debug log.
                 new MaterialAlertDialogBuilder(TripInfoActivity.this, R.style.myMaterialAlertDialog)
                         .setTitle(R.string.title_how_to_use)
                         .setMessage(getString(R.string.text_introduction))

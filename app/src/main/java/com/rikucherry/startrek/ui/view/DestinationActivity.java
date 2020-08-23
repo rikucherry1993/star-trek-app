@@ -129,7 +129,7 @@ public class DestinationActivity extends AppCompatActivity {
         imageButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: Set debug log.
+
                 setResult(RESULT_CANCELED);
                 finish();
             }
@@ -138,7 +138,7 @@ public class DestinationActivity extends AppCompatActivity {
         imageButtonHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: Set debug log.
+
                 new MaterialAlertDialogBuilder(DestinationActivity.this, R.style.myMaterialAlertDialog)
                         .setTitle(getString(R.string.title_next_step))
                         .setMessage(getString(R.string.text_next_step))
