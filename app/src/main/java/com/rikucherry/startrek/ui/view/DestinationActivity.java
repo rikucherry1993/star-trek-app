@@ -48,13 +48,13 @@ public class DestinationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         // bind view
         binding = ActivityDestinationBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
-        // show loading dialog
+        // loading stuffs
+        binding.setIsLoading(true);
         loadingDialog = new LoadingDialog(this);
         loadingDialog.startLoadingDialog();
 
@@ -79,10 +79,6 @@ public class DestinationActivity extends AppCompatActivity {
      * Initialize dynamic UI elements.
      */
     private void initializeUI(){
-
-        // TODO: mock
-        binding.labelArrivingAt.setVisibility(View.VISIBLE);
-        binding.textArrivingAt.setText("Centaurus");
 
         // TODO: mock: bind images to image slider.
         mSlideModel.add(new SlideModel(R.drawable.centaurus_mock_01,
@@ -160,6 +156,9 @@ public class DestinationActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
+                binding.setIsLoading(false);
+
+                // TODO: ↓Am I doing it right???
                 mList.clear();
                 mList.addAll(objectsItems);
                 mAdapter.notifyDataSetChanged();
