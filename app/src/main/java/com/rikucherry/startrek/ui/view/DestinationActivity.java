@@ -2,8 +2,6 @@ package com.rikucherry.startrek.ui.view;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,12 +10,12 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.rikucherry.startrek.R;
 import com.rikucherry.startrek.constant.AppConstants;
+import com.rikucherry.startrek.databinding.ActivityDestinationBinding;
 import com.rikucherry.startrek.model.ObjectsItem;
 import com.rikucherry.startrek.ui.adapter.ObjectsItemAdapter;
 import com.rikucherry.startrek.ui.viewmodel.ListViewModel;
@@ -25,18 +23,16 @@ import com.rikucherry.startrek.ui.viewmodel.ListViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Thread.sleep;
+
 public class DestinationActivity extends AppCompatActivity {
 
     private final String TAG = this.getClass().getSimpleName();
 
-    // views
-    ImageButton imageButtonBack;
-    ImageButton imageButtonHelp;
-    TextView labelArrivingAt;
-    TextView textArrivingAt;
-    ImageSlider imageSlider;
-    List<SlideModel> mSlideModel;
-    RecyclerView recyclerView;
+    private List<SlideModel> mSlideModel;
+
+    // binding object
+    private ActivityDestinationBinding binding;
 
     // data set
     private List<ObjectsItem> mList = new ArrayList<>();
@@ -48,21 +44,19 @@ public class DestinationActivity extends AppCompatActivity {
 
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_destination);
 
-        // view binding
-        imageButtonBack = findViewById(R.id.image_button_back);
-        imageButtonHelp = findViewById(R.id.image_button_help);
-        labelArrivingAt = findViewById(R.id.label_arriving_at);
-        textArrivingAt = findViewById(R.id.text_arriving_at);
-        imageSlider = findViewById(R.id.image_galaxy_slider);
-        recyclerView = findViewById(R.id.list_celestial_objects);
 
+        // bind view
+        binding = ActivityDestinationBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+
+        // show loading dialog
         loadingDialog = new LoadingDialog(this);
+        loadingDialog.startLoadingDialog();
 
         mSlideModel = new ArrayList<>();
 
@@ -87,8 +81,8 @@ public class DestinationActivity extends AppCompatActivity {
     private void initializeUI(){
 
         // TODO: mock
-        labelArrivingAt.setVisibility(View.VISIBLE);
-        textArrivingAt.setText("Centaurus");
+        binding.labelArrivingAt.setVisibility(View.VISIBLE);
+        binding.textArrivingAt.setText("Centaurus");
 
         // TODO: mock: bind images to image slider.
         mSlideModel.add(new SlideModel(R.drawable.centaurus_mock_01,
@@ -98,7 +92,7 @@ public class DestinationActivity extends AppCompatActivity {
         mSlideModel.add(new SlideModel(R.drawable.centaurus_mock_03,
                 ScaleTypes.CENTER_CROP));
 
-        imageSlider.setImageList(mSlideModel,ScaleTypes.CENTER_CROP);
+        binding.imageGalaxySlider.setImageList(mSlideModel,ScaleTypes.CENTER_CROP);
 
 
         initializeRecyclerView();
@@ -112,11 +106,11 @@ public class DestinationActivity extends AppCompatActivity {
     private void initializeRecyclerView(){
 
 
-        mAdapter = new ObjectsItemAdapter(this,mList);
+        mAdapter = new ObjectsItemAdapter(mList);
         mLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
+        binding.listCelestialObjects.setLayoutManager(mLayoutManager);
+        binding.listCelestialObjects.setItemAnimator(new DefaultItemAnimator());
+        binding.listCelestialObjects.setAdapter(mAdapter);
 
     }
 
@@ -126,7 +120,7 @@ public class DestinationActivity extends AppCompatActivity {
      */
     private void setListeners(){
 
-        imageButtonBack.setOnClickListener(new View.OnClickListener() {
+        binding.imageButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -135,7 +129,7 @@ public class DestinationActivity extends AppCompatActivity {
             }
         });
 
-        imageButtonHelp.setOnClickListener(new View.OnClickListener() {
+        binding.imageButtonHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -159,9 +153,19 @@ public class DestinationActivity extends AppCompatActivity {
         viewModel.getObjectsItemObservable().observe(this, new Observer<List<ObjectsItem>>() {
             @Override
             public void onChanged(@Nullable List<ObjectsItem> objectsItems) {
+                // TODO: fake api time lapse
+                try {
+                    sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
                 mList.clear();
                 mList.addAll(objectsItems);
                 mAdapter.notifyDataSetChanged();
+
+                // dismiss loading dialog
+                loadingDialog.dismissDialog();
             }
         });
 

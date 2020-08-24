@@ -18,23 +18,14 @@ public class ListViewService {
     public List<ObjectsItem> getObjectsItemList(String speed, String time){
 
         //TODO: Replace with an actual api, show loading modal.
-//                try {
-//                    sleep(3000);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
                 setFakeData();
 
         return objectsItemList;
 
     }
 
-
-
-
     // TODO: mock-up. delete later.
     private void setFakeData(){
-        // TODO mock data
         ObjectsItem object1 = new ObjectsItem();
         object1.setImageResourceId(R.drawable.alpha_centauri_mock);
         object1.setObjectName("Alpha Centauri");
