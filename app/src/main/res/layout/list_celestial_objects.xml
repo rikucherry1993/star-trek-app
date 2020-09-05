@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable name="isLoading" type="boolean" />
+    </data>
+
+<RelativeLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/gray_900">
+
+   <ImageView
+       android:id="@+id/image_object"
+       android:layout_width="100dp"
+       android:layout_height="100dp"
+       android:layout_alignParentStart="true"
+       android:layout_centerVertical="true"
+       android:layout_marginLeft="10dp"
+       tools:background="@color/gray_600"
+       />
+
+    <TextView
+        android:id="@+id/text_object_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/image_object"
+        android:layout_alignTop="@+id/image_object"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:textSize="14sp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:fontFamily="@font/press_start_2p"
+        android:textColor="@color/gray_100"
+        tools:text = "dummy dummy"
+        />
+
+
+    <TextView
+        android:id="@+id/text_object_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/image_object"
+        android:layout_alignStart="@+id/text_object_name"
+        android:layout_below="@+id/text_object_name"
+        android:layout_marginTop="20dp"
+        android:textSize="12sp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:fontFamily="@font/press_start_2p"
+        android:textColor="@color/gray_300"
+        tools:text = "dummy category"
+        />
+
+    <TextView
+        android:id="@+id/text_object_introduction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/image_object"
+        android:layout_alignStart="@+id/text_object_name"
+        android:layout_below="@+id/text_object_category"
+        android:layout_marginTop="10dp"
+        android:textSize="12sp"
+        android:fontFamily="@font/press_start_2p"
+        android:textColor="@color/gray_300"
+        android:maxLines="1"
+        android:ellipsize="end"
+        tools:text = "introduction introduction"
+        />
+
+    <View
+        android:id="@+id/view_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black_100"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="10dp"
+        />
+
+</RelativeLayout>
+
+</layout>
