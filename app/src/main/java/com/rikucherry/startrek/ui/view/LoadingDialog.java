@@ -1,4 +1,4 @@
-package com.rikucherry.startrek.view;
+package com.rikucherry.startrek.ui.view;
 
 import android.app.Activity;
 import android.app.AlertDialog;

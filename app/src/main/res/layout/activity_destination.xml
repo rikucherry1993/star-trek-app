@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+<data>
+    <variable name="isLoading" type="boolean" />
+</data>
+
+<LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,7 +29,8 @@
             android:background="@color/gray_900"
             app:iss_auto_cycle="true"
             app:iss_period="2000"
-            app:iss_delay="250">
+            app:iss_delay="250"
+            app:showOrHide="@{isLoading}">
         </com.denzcoskun.imageslider.ImageSlider>
 
 
@@ -59,7 +68,7 @@
             android:paddingLeft="25dp"
             android:textStyle="bold"
             android:textColor="@color/gray_100"
-            android:visibility="invisible"
+            app:showOrHide="@{isLoading}"
             />
 
         <TextView
@@ -70,9 +79,11 @@
             android:layout_marginTop="20dp"
             android:textAlignment="center"
             android:textSize="24sp"
+            android:text = "--------"
             android:fontFamily="@font/press_start_2p"
             android:textStyle="bold"
             android:textColor="@color/gray_100"
+            app:showOrHide="@{isLoading}"
             />
 
 
@@ -103,3 +114,4 @@
 
 
 </LinearLayout>
+</layout>
