@@ -79,7 +79,7 @@
             android:layout_marginTop="20dp"
             android:textAlignment="center"
             android:textSize="24sp"
-            android:text = "Centaurus"
+            android:text = "--------"
             android:fontFamily="@font/press_start_2p"
             android:textStyle="bold"
             android:textColor="@color/gray_100"

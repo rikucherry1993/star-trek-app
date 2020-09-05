@@ -39,7 +39,7 @@ public class ObjectsItemAdapter extends RecyclerView.Adapter<ObjectsItemAdapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         ObjectsItem item = mList.get(position);
 
-        holder.listBinding.imageObject.setImageResource(item.getImageResourceId());
+        holder.listBinding.imageObject.setImageResource(item.getChildImageId());
         holder.listBinding.textObjectName.setText(item.getObjectName());
         holder.listBinding.textObjectCategory.setText(item.getObjectCategory());
         holder.listBinding.textObjectIntroduction.setText(item.getObjectIntroduction());

@@ -68,31 +68,71 @@ public class DestinationActivity extends AppCompatActivity {
         final ListViewModel viewModel = new ListViewModel(getApplication(),inputSpeed,inputTime);
         observeViewModel(viewModel);
 
-        initializeUI();
+        initializeRecyclerView();
 
+
+    }
+
+
+    /**
+     * Start observing viewModel
+     * @param viewModel
+     */
+    private void observeViewModel(ListViewModel viewModel){
+
+        // once receipt of list from viewModel, notify adapter to update changes
+        viewModel.getObjectsItemObservable().observe(this, new Observer<List<ObjectsItem>>() {
+            @Override
+            public void onChanged(@Nullable List<ObjectsItem> objectsItems) {
+                // TODO: fake api time lapse
+                try {
+                    sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                binding.setIsLoading(false);
+
+                if (objectsItems == null || objectsItems.size() == 0) {
+                    //TODO: alert - You are in nowhere!
+                } else {
+                    binding.textArrivingAt.setText(objectsItems.get(0).getSystemName());
+                    int imageId1 = objectsItems.get(0).getParentImageId1();
+                    int imageId2 = objectsItems.get(0).getParentImageId2();
+                    int imageId3 = objectsItems.get(0).getParentImageId3();
+                    initializeSlider(imageId1,imageId2,imageId3,0);
+                    setListeners();
+
+                    mList.clear();
+                    mList.addAll(objectsItems);
+                    mAdapter.notifyDataSetChanged();
+                }
+
+                // dismiss loading dialog
+                loadingDialog.dismissDialog();
+            }
+        });
 
     }
 
 
 
     /**
-     * Initialize dynamic UI elements.
+     * Initialize dynamic slider.
      */
-    private void initializeUI(){
+    private void initializeSlider(int id1, int id2, int id3, int onError){
 
         // TODO: mock: bind images to image slider.
-        mSlideModel.add(new SlideModel(R.drawable.centaurus_mock_01,
-                ScaleTypes.CENTER_CROP));
-        mSlideModel.add(new SlideModel(R.drawable.centaurus_mock_02,
-                ScaleTypes.CENTER_CROP));
-        mSlideModel.add(new SlideModel(R.drawable.centaurus_mock_03,
-                ScaleTypes.CENTER_CROP));
+        id1 = R.drawable.centaurus_mock_01;
+        id2 = R.drawable.centaurus_mock_02;
+        id3 = R.drawable.centaurus_mock_03;
+
+        mSlideModel.add(new SlideModel(id1, ScaleTypes.CENTER_CROP));
+        mSlideModel.add(new SlideModel(id2, ScaleTypes.CENTER_CROP));
+        mSlideModel.add(new SlideModel(id3, ScaleTypes.CENTER_CROP));
 
         binding.imageGalaxySlider.setImageList(mSlideModel,ScaleTypes.CENTER_CROP);
 
-
-        initializeRecyclerView();
-        setListeners();
     }
 
 
@@ -133,38 +173,6 @@ public class DestinationActivity extends AppCompatActivity {
                         .setTitle(getString(R.string.title_next_step))
                         .setMessage(getString(R.string.text_next_step))
                         .setPositiveButton(getString(R.string.button_positive),null).show();
-            }
-        });
-
-    }
-
-
-    /**
-     * Start observing viewModel
-     * @param viewModel
-     */
-    private void observeViewModel(ListViewModel viewModel){
-
-        // once receipt of list from viewModel, notify adapter to update changes
-        viewModel.getObjectsItemObservable().observe(this, new Observer<List<ObjectsItem>>() {
-            @Override
-            public void onChanged(@Nullable List<ObjectsItem> objectsItems) {
-                // TODO: fake api time lapse
-                try {
-                    sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-                binding.setIsLoading(false);
-
-                // TODO: ↓Am I doing it right???
-                mList.clear();
-                mList.addAll(objectsItems);
-                mAdapter.notifyDataSetChanged();
-
-                // dismiss loading dialog
-                loadingDialog.dismissDialog();
             }
         });
 
