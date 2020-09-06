@@ -54,10 +54,21 @@
         android:id="@+id/text_travel_speed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:fontFamily="@font/press_start_2p"
         android:textColor="@color/gray_300"
         android:textSize="14sp"
+        android:fontFamily="@font/press_start_2p"
+        app:layout_constraintEnd_toStartOf="@+id/text_speed_unit"
+        app:layout_constraintTop_toTopOf="@+id/label_travel_speed"
+        />
+
+    <TextView
+        android:id="@+id/text_speed_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray_300"
+        android:textSize="14sp"
+        android:layout_marginRight="10dp"
+        android:fontFamily="@font/press_start_2p"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/label_travel_speed"
         />
@@ -127,10 +138,21 @@
         android:id="@+id/text_travel_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:fontFamily="@font/press_start_2p"
         android:textColor="@color/gray_300"
         android:textSize="14sp"
+        android:fontFamily="@font/press_start_2p"
+        app:layout_constraintEnd_toStartOf="@+id/text_time_unit"
+        app:layout_constraintTop_toTopOf="@+id/label_travel_time"
+        />
+
+    <TextView
+        android:id="@+id/text_time_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray_300"
+        android:textSize="14sp"
+        android:layout_marginRight="10dp"
+        android:fontFamily="@font/press_start_2p"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/label_travel_time"
         />

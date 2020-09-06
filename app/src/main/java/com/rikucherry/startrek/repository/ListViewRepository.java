@@ -33,10 +33,10 @@ public class ListViewRepository {
 
 
     // get data from service layer that would be called by viewModel
-    public LiveData<List<ObjectsItem>> getObjectsItem(String speed, String time){
+    public LiveData<List<ObjectsItem>> getObjectsItem(String speed, String time, String timeUnit){
         final MutableLiveData<List<ObjectsItem>> data = new MutableLiveData<>();
 
-        data.postValue(listViewService.getObjectsItemList(speed,time));
+        data.postValue(listViewService.getObjectsItemList(speed,time,timeUnit));
 
         return data;
 

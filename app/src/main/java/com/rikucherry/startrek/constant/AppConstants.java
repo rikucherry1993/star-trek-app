@@ -16,6 +16,7 @@ public class AppConstants {
     // Intent keys
     public static final String EXTRA_TRAVEL_SPEED = "EXTRA_TRAVEL_SPEED";
     public static final String EXTRA_TRAVEL_TIME = "EXTRA_TRAVEL_TIME";
+    public static final String EXTRA_TIME_UNIT = "EXTRA_TIME_UNIT";
 
     // Request code
     public static final int TRIP_INFO_ACTIVITY = 1;

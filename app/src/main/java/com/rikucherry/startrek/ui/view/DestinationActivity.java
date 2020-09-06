@@ -63,9 +63,11 @@ public class DestinationActivity extends AppCompatActivity {
         // Receive intent
         String inputSpeed = getIntent().getStringExtra(AppConstants.EXTRA_TRAVEL_SPEED);
         String inputTime = getIntent().getStringExtra(AppConstants.EXTRA_TRAVEL_TIME);
+        String inputTimeUnit = getIntent().getStringExtra(AppConstants.EXTRA_TIME_UNIT);
 
         // create view model
-        final ListViewModel viewModel = new ListViewModel(getApplication(),inputSpeed,inputTime);
+        final ListViewModel viewModel = new ListViewModel(getApplication(),inputSpeed,inputTime,
+                inputTimeUnit);
         observeViewModel(viewModel);
 
         initializeRecyclerView();

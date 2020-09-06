@@ -15,9 +15,9 @@ public class ListViewService {
     private List<ObjectsItem> objectsItemList = new ArrayList<>();
 
     // return list to repository(the mediator combines viewModel and model)
-    public List<ObjectsItem> getObjectsItemList(String speed, String time){
+    public List<ObjectsItem> getObjectsItemList(String speed, String time, String timeUnit){
 
-        //TODO: Replace with an actual api, show loading modal.
+        //TODO: Replace with an actual api
                 setFakeData();
 
         return objectsItemList;

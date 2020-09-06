@@ -51,22 +51,26 @@ public class TripInfoActivity extends AppCompatActivity {
             public String getFormattedValue(float value) {
                 if (value == 0) {
                     binding.textTravelSpeed.setText("");
+                    binding.textSpeedUnit.setText("");
                     binding.imageSpacecraftImage.setImageDrawable(null);
                     binding.textSpacecraftImage.setVisibility(View.VISIBLE);
                     return AppConstants.NO_VELOCITY;
                 } else if (value == 1) {
                     binding.textSpacecraftImage.setVisibility(View.INVISIBLE);
-                    binding.textTravelSpeed.setText(AppConstants.ESCAPE_VELOCITY + getString(R.string.unit_travel_speed));
+                    binding.textTravelSpeed.setText(AppConstants.ESCAPE_VELOCITY);
+                    binding.textSpeedUnit.setText(getString(R.string.unit_travel_speed));
                     binding.imageSpacecraftImage.setImageResource(R.drawable.normal_spacecraft);
                     return AppConstants.ESCAPE_VELOCITY + getString(R.string.unit_travel_speed);
                 } else if (value == 2) {
                     binding.textSpacecraftImage.setVisibility(View.INVISIBLE);
-                    binding.textTravelSpeed.setText(AppConstants.SOLAR_SYSTEM_VELOCITY + getString(R.string.unit_travel_speed));
+                    binding.textTravelSpeed.setText(AppConstants.SOLAR_SYSTEM_VELOCITY);
+                    binding.textSpeedUnit.setText(getString(R.string.unit_travel_speed));
                     binding.imageSpacecraftImage.setImageResource(R.drawable.escape_from_solar_system);
                     return AppConstants.SOLAR_SYSTEM_VELOCITY + getString(R.string.unit_travel_speed);
                 } else {
                     binding.textSpacecraftImage.setVisibility(View.INVISIBLE);
-                    binding.textTravelSpeed.setText(AppConstants.SPEED_OF_LIGHT + getString(R.string.unit_travel_speed));
+                    binding.textTravelSpeed.setText(AppConstants.SPEED_OF_LIGHT);
+                    binding.textSpeedUnit.setText(getString(R.string.unit_travel_speed));
                     binding.imageSpacecraftImage.setImageResource(R.drawable.light);
                     return AppConstants.SPEED_OF_LIGHT + getString(R.string.unit_travel_speed);
                 }
@@ -82,15 +86,21 @@ public class TripInfoActivity extends AppCompatActivity {
                 if (value == 0) {
                     labelTravelTime = AppConstants.NO_TIME;
                     binding.textTravelTime.setText("");
+                    binding.textTimeUnit.setText("");
                     return labelTravelTime;
                 } else if (value == 1) {
                     labelTravelTime = "1" + " " + getString(R.string.unit_travel_time_day);
+                    binding.textTravelTime.setText("1");
+                    binding.textTimeUnit.setText(" " + getString(R.string.unit_travel_time_day));
                 } else if (value == 2) {
                     labelTravelTime = "1" + " " + getString(R.string.unit_travel_time_year);
+                    binding.textTravelTime.setText("1");
+                    binding.textTimeUnit.setText(" " + getString(R.string.unit_travel_time_year));
                 } else {
                     labelTravelTime = (int)value + 1 + " " + getString(R.string.unit_travel_time_years);
+                    binding.textTravelTime.setText(String.valueOf((int)value + 1));
+                    binding.textTimeUnit.setText(" " + getString(R.string.unit_travel_time_years));
                 }
-                binding.textTravelTime.setText(labelTravelTime);
                 return labelTravelTime;
 
             }
@@ -122,9 +132,8 @@ public class TripInfoActivity extends AppCompatActivity {
                         Intent i = new Intent(TripInfoActivity.this, DestinationActivity.class);
                         i.putExtra(AppConstants.EXTRA_TRAVEL_SPEED,binding.textTravelSpeed.getText().toString());
                         i.putExtra(AppConstants.EXTRA_TRAVEL_TIME,binding.textTravelTime.getText().toString());
+                        i.putExtra(AppConstants.EXTRA_TIME_UNIT,binding.textTimeUnit.getText().toString());
                         startActivityForResult(i,AppConstants.DESTINATION_ACTIVITY);
-
-                        // TODO: Set unit to an individual text view.
 
                         break;
                 }

@@ -19,9 +19,9 @@ public class ListViewModel extends AndroidViewModel {
     private final LiveData<List<ObjectsItem>> objectsItemObservable;
 
     // Constructor
-    public ListViewModel(Application application, String speed, String time){
+    public ListViewModel(Application application, String speed, String time, String timeUnit){
         super(application);
-        objectsItemObservable = ListViewRepository.getInstance().getObjectsItem(speed, time);
+        objectsItemObservable = ListViewRepository.getInstance().getObjectsItem(speed, time, timeUnit);
     }
 
 
