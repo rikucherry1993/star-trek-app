@@ -3,7 +3,10 @@ package com.rikucherry.startrek.ui.adapter;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
+import androidx.paging.PagedListAdapter;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rikucherry.startrek.R;
@@ -16,14 +19,15 @@ import java.util.List;
  * Adapter for ObjectsItem
  *
  * @author rikucherry
- * @version 1.0
+ * @version 1.1
  */
-public class ObjectsItemAdapter extends RecyclerView.Adapter<ObjectsItemAdapter.ViewHolder> {
+public class ObjectsItemAdapter extends PagedListAdapter<ObjectsItem,ObjectsItemAdapter.ViewHolder> {
 
     private List<ObjectsItem> mList;
 
-    public ObjectsItemAdapter(List<ObjectsItem> items) {
-        this.mList = items;
+    public ObjectsItemAdapter() {
+        super(diffCallback);
+//        this.mList = items;
     }
 
     @Override
@@ -37,21 +41,29 @@ public class ObjectsItemAdapter extends RecyclerView.Adapter<ObjectsItemAdapter.
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        ObjectsItem item = mList.get(position);
+        ObjectsItem item = getItem(position);
 
-        holder.listBinding.imageObject.setImageResource(item.getChildImageId());
-        holder.listBinding.textObjectName.setText(item.getObjectName());
-        holder.listBinding.textObjectCategory.setText(item.getObjectCategory());
-        holder.listBinding.textObjectIntroduction.setText(item.getObjectIntroduction());
-    }
-
-    @Override
-    public int getItemCount() {
-        if (mList == null) {
-            return 0;
+        if (item != null) {
+            holder.listBinding.imageObject.setImageResource(item.getChildImageId());
+            holder.listBinding.textObjectName.setText(item.getObjectName());
+            holder.listBinding.textObjectCategory.setText(item.getObjectCategory());
+            holder.listBinding.textObjectIntroduction.setText(item.getObjectIntroduction());
         }
-        return mList.size();
+
     }
+
+    private static DiffUtil.ItemCallback<ObjectsItem> diffCallback =
+            new DiffUtil.ItemCallback<ObjectsItem>() {
+                @Override
+                public boolean areItemsTheSame(@NonNull ObjectsItem oldItem, @NonNull ObjectsItem newItem) {
+                    return oldItem.getObjectName().equals(newItem.getObjectName());
+                }
+
+                @Override
+                public boolean areContentsTheSame(@NonNull ObjectsItem oldItem, @NonNull ObjectsItem newItem) {
+                    return oldItem.equals(newItem);
+                }
+            };
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {

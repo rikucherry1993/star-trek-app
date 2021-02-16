@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
+import androidx.paging.PagedList;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,7 +36,6 @@ public class DestinationActivity extends AppCompatActivity {
     private ActivityDestinationBinding binding;
 
     // data set
-    private List<ObjectsItem> mList = new ArrayList<>();
     private ObjectsItemAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
@@ -81,9 +81,9 @@ public class DestinationActivity extends AppCompatActivity {
     private void observeViewModel(ListViewModel viewModel){
 
         // once receipt of list from viewModel, notify adapter to update changes
-        viewModel.getObjectsItemObservable().observe(this, new Observer<List<ObjectsItem>>() {
+        viewModel.objectsItemObservable.observe(this, new Observer<PagedList<ObjectsItem>>() {
             @Override
-            public void onChanged(@Nullable List<ObjectsItem> objectsItems) {
+            public void onChanged(@Nullable PagedList<ObjectsItem> objectsItems) {
                 // TODO: fake api time lapse
                 try {
                     sleep(3000);
@@ -103,9 +103,7 @@ public class DestinationActivity extends AppCompatActivity {
                     initializeSlider(imageId1,imageId2,imageId3,0);
                     setListeners();
 
-                    mList.clear();
-                    mList.addAll(objectsItems);
-                    mAdapter.notifyDataSetChanged();
+                    mAdapter.submitList(objectsItems);
                 }
 
                 // dismiss loading dialog
@@ -142,7 +140,7 @@ public class DestinationActivity extends AppCompatActivity {
     private void initializeRecyclerView(){
 
 
-        mAdapter = new ObjectsItemAdapter(mList);
+        mAdapter = new ObjectsItemAdapter();
         mLayoutManager = new LinearLayoutManager(this);
         binding.listCelestialObjects.setLayoutManager(mLayoutManager);
         binding.listCelestialObjects.setItemAnimator(new DefaultItemAnimator());

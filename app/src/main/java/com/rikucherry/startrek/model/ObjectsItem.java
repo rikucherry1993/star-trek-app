@@ -78,5 +78,25 @@ public class ObjectsItem {
         this.objectIntroduction = objectIntroduction;
     }
 
+    public boolean equals(ObjectsItem obj){
+        if (obj == null) {
+            return false;
+        }
+
+        if (this == obj) {
+            return true;
+        }
+
+        return (this.getObjectName().equals(obj.getObjectName())
+                && this.getChildImageId() == obj.getChildImageId()
+                && this.getObjectCategory().equals(obj.getObjectCategory())
+                && this.getObjectIntroduction().equals(obj.getObjectIntroduction())
+                && this.getSystemName().equals(obj.getSystemName())
+                && this.getParentImageId1() == obj.getParentImageId1()
+                && this.getParentImageId2() == obj.getParentImageId2()
+                && this.getParentImageId3() == obj.getParentImageId3()
+                );
+    }
+
 
 }

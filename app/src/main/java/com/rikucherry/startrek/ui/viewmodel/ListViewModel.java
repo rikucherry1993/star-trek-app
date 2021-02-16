@@ -4,11 +4,11 @@ import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.paging.LivePagedListBuilder;
+import androidx.paging.PagedList;
 
 import com.rikucherry.startrek.model.ObjectsItem;
-import com.rikucherry.startrek.repository.ListViewRepository;
-
-import java.util.List;
+import com.rikucherry.startrek.repository.ObjectsDataFactory;
 
 /**
  * ViewModel for destination activity
@@ -16,18 +16,20 @@ import java.util.List;
 public class ListViewModel extends AndroidViewModel {
 
     // Observable object
-    private final LiveData<List<ObjectsItem>> objectsItemObservable;
+    public LiveData<PagedList<ObjectsItem>> objectsItemObservable;
 
     // Constructor
     public ListViewModel(Application application, String speed, String time){
         super(application);
-        objectsItemObservable = ListViewRepository.getInstance().getObjectsItem(speed, time);
-    }
 
+        ObjectsDataFactory dataFactory = new ObjectsDataFactory(speed,time);
 
-    // Publish the observable list to activity
-    public LiveData<List<ObjectsItem>> getObjectsItemObservable() {
-        return objectsItemObservable;
+        PagedList.Config pagedListConfig =
+                (new PagedList.Config.Builder())
+                .setEnablePlaceholders(false)
+                .setPageSize(5).build();
+
+        objectsItemObservable = (new LivePagedListBuilder(dataFactory,pagedListConfig)).build();
     }
 
 }
